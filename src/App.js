@@ -192,24 +192,29 @@ function App() {
               <h3>Kit Coleira + Pulseira Matching</h3>
               <p className="produto-descricao">
                 Um kit super especial para demonstrar o amor entre você e seu pet! 
-                Coleira confortável para seu bichinho e pulseira combinando para você.
+                Coleira confortável para seu bichinho e pulseira combinando para você. 
+                Feitos com materiais de qualidade e design exclusivo da Patinhas Felizes.
               </p>
               <div className="produto-beneficios">
                 <div className="beneficio">
-                  <i className="fas fa-heart"></i>
-                  <span>Design exclusivo e matching</span>
+                  <i className="fas fa-check"></i>
+                  <span>Materiais de alta qualidade</span>
                 </div>
                 <div className="beneficio">
-                  <i className="fas fa-shield-alt"></i>
-                  <span>Material resistente e confortável</span>
+                  <i className="fas fa-check"></i>
+                  <span>Design exclusivo e fofo</span>
                 </div>
                 <div className="beneficio">
-                  <i className="fas fa-gift"></i>
-                  <span>Embalagem especial inclusa</span>
+                  <i className="fas fa-check"></i>
+                  <span>Conforto garantido</span>
+                </div>
+                <div className="beneficio">
+                  <i className="fas fa-check"></i>
+                  <span>Conexão pet + tutor</span>
                 </div>
               </div>
               <div className="produto-preco">
-                <span className="preco">R$ 89,90</span>
+                <span className="preco">R$ 450,00 - R$ 600,00</span>
               </div>
               <a href="#contato" className="btn-primary">Quero o meu Kit!</a>
             </div>
@@ -365,8 +370,8 @@ function App() {
       <section id="contato" className="contato">
         <div className="container">
           <div className="section-header">
-            <h2>Entre em Contato 📞</h2>
-            <p>Estamos aqui para cuidar do seu melhor amigo</p>
+            <h2>Venha nos Visitar! 📍</h2>
+            <p>Estamos esperando você e seu bichinho de braços abertos</p>
           </div>
           
           <div className="contato-grid">
@@ -377,7 +382,9 @@ function App() {
                 </div>
                 <div className="info-content">
                   <h3>Endereço</h3>
-                  <p>Rua das Flores, 123<br />Centro - Cidade Feliz<br />CEP: 12345-678</p>
+                  <p>Rua das Gardênias, 128<br />
+                  Bairro Jardim Aurora<br />
+                  São Paulo – SP | CEP 04582-910</p>
                 </div>
               </div>
               
@@ -387,7 +394,17 @@ function App() {
                 </div>
                 <div className="info-content">
                   <h3>Telefone</h3>
-                  <p>(11) 9999-8888<br />WhatsApp disponível</p>
+                  <p>(11) 9999-9999</p>
+                </div>
+              </div>
+              
+              <div className="info-item">
+                <div className="info-icon">
+                  <i className="fas fa-envelope"></i>
+                </div>
+                <div className="info-content">
+                  <h3>E-mail</h3>
+                  <p>contato@patinhasfelizes.com.br</p>
                 </div>
               </div>
               
@@ -397,7 +414,9 @@ function App() {
                 </div>
                 <div className="info-content">
                   <h3>Horário de Funcionamento</h3>
-                  <p>Segunda a Sexta: 8h às 18h<br />Sábado: 8h às 14h<br />Domingo: Emergências</p>
+                  <p>Segunda a Sexta: 8h às 18h<br />
+                  Sábado: 8h às 14h<br />
+                  Domingo: Emergências</p>
                 </div>
               </div>
             </div>
@@ -407,6 +426,9 @@ function App() {
               <form>
                 <div className="form-group">
                   <input type="text" placeholder="Seu nome" required />
+                </div>
+                <div className="form-group">
+                  <input type="email" placeholder="Seu e-mail" required />
                 </div>
                 <div className="form-group">
                   <input type="tel" placeholder="Seu telefone" required />
@@ -420,13 +442,17 @@ function App() {
                     <option value="consulta">Consulta Geral</option>
                     <option value="vacina">Vacinação</option>
                     <option value="cirurgia">Cirurgia</option>
+                    <option value="exame">Exames</option>
                     <option value="emergencia">Emergência</option>
                   </select>
                 </div>
                 <div className="form-group">
-                  <textarea placeholder="Observações (opcional)"></textarea>
+                  <textarea placeholder="Conte-nos mais sobre seu bichinho ou sua necessidade"></textarea>
                 </div>
-                <button type="submit" className="btn-primary">Agendar Consulta</button>
+                <button type="submit" className="btn-primary">
+                  <i className="fas fa-heart"></i>
+                  Agendar com Carinho
+                </button>
               </form>
             </div>
           </div>
@@ -442,9 +468,9 @@ function App() {
                 <i className="fas fa-paw"></i>
                 <span>Patinhas Felizes</span>
               </div>
-              <p>Cuidando com amor dos seus melhores amigos há mais de 5 anos. Aqui, cada patinha é tratada com carinho especial.</p>
+              <p>Cuidando de vidas e fortalecendo o vínculo tutor–pet com carinho, confiança, segurança e conhecimento.</p>
               <div className="social-links">
-                <a href="#"><i className="fab fa-facebook-f"></i></a>
+                <a href="#"><i className="fab fa-facebook"></i></a>
                 <a href="#"><i className="fab fa-instagram"></i></a>
                 <a href="#"><i className="fab fa-whatsapp"></i></a>
               </div>
@@ -457,29 +483,32 @@ function App() {
                 <li><a href="#servicos">Vacinação</a></li>
                 <li><a href="#servicos">Cirurgias</a></li>
                 <li><a href="#servicos">Exames</a></li>
+                <li><a href="#servicos">Odontologia</a></li>
               </ul>
             </div>
             
             <div className="footer-section">
-              <h4>Links Úteis</h4>
+              <h4>Sobre Nós</h4>
               <ul>
-                <li><a href="#sobre">Sobre Nós</a></li>
+                <li><a href="#sobre">Nossa História</a></li>
                 <li><a href="#equipe">Nossa Equipe</a></li>
-                <li><a href="#produtos">Produtos</a></li>
-                <li><a href="#contato">Contato</a></li>
+                <li><a href="#produtos">Produtos Exclusivos</a></li>
+                <li><a href="#">Programa de Fidelidade</a></li>
               </ul>
             </div>
             
-            <div className="footer-section footer-contact">
+            <div className="footer-section">
               <h4>Contato</h4>
-              <p><i className="fas fa-map-marker-alt"></i> Rua das Flores, 123</p>
-              <p><i className="fas fa-phone"></i> (11) 9999-8888</p>
-              <p><i className="fas fa-envelope"></i> contato@patinhasfelizes.com</p>
+              <div className="footer-contact">
+                <p><i className="fas fa-map-marker-alt"></i> Rua das Gardênias, 128<br />Jardim Aurora - São Paulo/SP</p>
+                <p><i className="fas fa-phone"></i> (11) 9999-9999</p>
+                <p><i className="fas fa-envelope"></i> contato@patinhasfelizes.com.br</p>
+              </div>
             </div>
           </div>
           
           <div className="footer-bottom">
-            <p>&copy; 2024 Patinhas Felizes. Todos os direitos reservados.</p>
+            <p>&copy; 2024 Clínica Veterinária Patinhas Felizes. Todos os direitos reservados. Feito com 💕 para pets e tutores.</p>
           </div>
         </div>
       </footer>
