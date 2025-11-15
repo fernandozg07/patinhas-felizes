@@ -219,6 +219,32 @@ function App() {
               <a href="#contato" className="btn-primary">Quero o meu Kit!</a>
             </div>
           </div>
+          
+          {/* Exemplos de Pets */}
+          <div className="pets-exemplos">
+            <div className="section-header">
+              <h3>Perfeito para todos os pets! 🐶🐱</h3>
+              <p>Nossos kits são ideais para cães e gatos de todos os tamanhos</p>
+            </div>
+            
+            <div className="pets-grid">
+              <div className="pet-exemplo">
+                <div className="pet-image">
+                  <img src="/cachorro.png" alt="Cachorro fofo da clínica" />
+                </div>
+                <h4>Para Cães 🐕</h4>
+                <p>Coleiras confortáveis e resistentes para seu melhor amigo de quatro patas</p>
+              </div>
+              
+              <div className="pet-exemplo">
+                <div className="pet-image">
+                  <img src="/gato.png" alt="Gato fofo da clínica" />
+                </div>
+                <h4>Para Gatos 🐱</h4>
+                <p>Coleiras delicadas e seguras, perfeitas para nossos felinos especiais</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -342,7 +368,7 @@ function App() {
               </div>
               <h3>Alimentação Saudável</h3>
               <p>Descubra quais alimentos são ideais para cada fase da vida do seu pet e como manter uma dieta equilibrada.</p>
-              <a href="#" className="blog-link">Leia mais <i className="fas fa-arrow-right"></i></a>
+              <a href="/blog/alimentacao" className="blog-link">Leia mais <i className="fas fa-arrow-right"></i></a>
             </div>
             
             <div className="blog-card">
@@ -351,7 +377,7 @@ function App() {
               </div>
               <h3>Exercícios e Brincadeiras</h3>
               <p>Atividades divertidas para manter seu bichinho ativo, saudável e feliz todos os dias.</p>
-              <a href="#" className="blog-link">Leia mais <i className="fas fa-arrow-right"></i></a>
+              <a href="/blog/exercicios" className="blog-link">Leia mais <i className="fas fa-arrow-right"></i></a>
             </div>
             
             <div className="blog-card">
@@ -360,7 +386,7 @@ function App() {
               </div>
               <h3>Prevenção de Doenças</h3>
               <p>Saiba como prevenir as principais doenças e manter a saúde do seu pet sempre em dia.</p>
-              <a href="#" className="blog-link">Leia mais <i className="fas fa-arrow-right"></i></a>
+              <a href="/blog/prevencao" className="blog-link">Leia mais <i className="fas fa-arrow-right"></i></a>
             </div>
           </div>
         </div>
@@ -470,9 +496,9 @@ function App() {
               </div>
               <p>Cuidando de vidas e fortalecendo o vínculo tutor–pet com carinho, confiança, segurança e conhecimento.</p>
               <div className="social-links">
-                <a href="#"><i className="fab fa-facebook"></i></a>
-                <a href="#"><i className="fab fa-instagram"></i></a>
-                <a href="#"><i className="fab fa-whatsapp"></i></a>
+                <a href="https://facebook.com/patinhasfelizes"><i className="fab fa-facebook"></i></a>
+                <a href="https://instagram.com/patinhasfelizes"><i className="fab fa-instagram"></i></a>
+                <a href="https://wa.me/5511999999999"><i className="fab fa-whatsapp"></i></a>
               </div>
             </div>
             
@@ -493,7 +519,7 @@ function App() {
                 <li><a href="#sobre">Nossa História</a></li>
                 <li><a href="#equipe">Nossa Equipe</a></li>
                 <li><a href="#produtos">Produtos Exclusivos</a></li>
-                <li><a href="#">Programa de Fidelidade</a></li>
+                <li><a href="#produtos">Programa de Fidelidade</a></li>
               </ul>
             </div>
             

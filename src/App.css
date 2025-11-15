@@ -364,6 +364,57 @@ body {
     margin-bottom: 2rem;
 }
 
+/* Pets Exemplos */
+.pets-exemplos {
+    margin-top: 4rem;
+    padding-top: 4rem;
+    border-top: 2px solid #E8F4F8;
+}
+
+.pets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.pet-exemplo {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.pet-exemplo:hover {
+    transform: translateY(-5px);
+}
+
+.pet-image {
+    margin-bottom: 1.5rem;
+}
+
+.pet-image img {
+    max-width: 200px;
+    max-height: 200px;
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+.pet-exemplo h4 {
+    font-size: 1.5rem;
+    color: #8B4513;
+    margin-bottom: 1rem;
+}
+
+.pet-exemplo p {
+    color: #666;
+    line-height: 1.7;
+}
+
 .produto-beneficios {
     margin-bottom: 2rem;
 }
@@ -858,6 +909,15 @@ body {
     }
     
     .produto-destaque {
+        padding: 1.5rem;
+    }
+    
+    .pets-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .pet-exemplo {
         padding: 1.5rem;
     }
     
