@@ -194,10 +194,295 @@ function App() {
                 Um kit super especial para demonstrar o amor entre você e seu pet! 
                 Coleira confortável para seu bichinho e pulseira combinando para você.
               </p>
+              <div className="produto-beneficios">
+                <div className="beneficio">
+                  <i className="fas fa-heart"></i>
+                  <span>Design exclusivo e matching</span>
+                </div>
+                <div className="beneficio">
+                  <i className="fas fa-shield-alt"></i>
+                  <span>Material resistente e confortável</span>
+                </div>
+                <div className="beneficio">
+                  <i className="fas fa-gift"></i>
+                  <span>Embalagem especial inclusa</span>
+                </div>
+              </div>
+              <div className="produto-preco">
+                <span className="preco">R$ 89,90</span>
+              </div>
+              <a href="#contato" className="btn-primary">Quero o meu Kit!</a>
             </div>
           </div>
         </div>
       </section>
+
+      {/* Depoimentos Section */}
+      <section className="depoimentos">
+        <div className="container">
+          <div className="section-header">
+            <h2>O que nossos clientes dizem 💕</h2>
+            <p>Histórias reais de amor e cuidado</p>
+          </div>
+          
+          <div className="depoimentos-grid">
+            <div className="depoimento-card">
+              <div className="depoimento-content">
+                <p>"A Dra. Ana cuidou do meu Thor com tanto carinho! O ambiente é super acolhedor e meu cachorro ficou calminho durante toda a consulta. Recomendo de olhos fechados!"</p>
+              </div>
+              <div className="depoimento-autor">
+                <div className="autor-info">
+                  <h4>Maria Silva</h4>
+                  <span>Tutora do Thor</span>
+                </div>
+                <div className="estrelas">
+                  <i className="fas fa-star"></i>
+                  <i className="fas fa-star"></i>
+                  <i className="fas fa-star"></i>
+                  <i className="fas fa-star"></i>
+                  <i className="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+            
+            <div className="depoimento-card">
+              <div className="depoimento-content">
+                <p>"Minha gatinha Luna estava doentinha e a equipe foi incrível! Atendimento humanizado, preços justos e muito profissionalismo. Viramos clientes fiéis!"</p>
+              </div>
+              <div className="depoimento-autor">
+                <div className="autor-info">
+                  <h4>João Santos</h4>
+                  <span>Tutor da Luna</span>
+                </div>
+                <div className="estrelas">
+                  <i className="fas fa-star"></i>
+                  <i className="fas fa-star"></i>
+                  <i className="fas fa-star"></i>
+                  <i className="fas fa-star"></i>
+                  <i className="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+            
+            <div className="depoimento-card">
+              <div className="depoimento-content">
+                <p>"O Kit Coleira + Pulseira é lindo demais! Eu e meu Buddy ficamos combinando e todo mundo elogia. A qualidade é excelente e o preço super justo!"</p>
+              </div>
+              <div className="depoimento-autor">
+                <div className="autor-info">
+                  <h4>Ana Costa</h4>
+                  <span>Tutora do Buddy</span>
+                </div>
+                <div className="estrelas">
+                  <i className="fas fa-star"></i>
+                  <i className="fas fa-star"></i>
+                  <i className="fas fa-star"></i>
+                  <i className="fas fa-star"></i>
+                  <i className="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Equipe Section */}
+      <section id="equipe" className="equipe">
+        <div className="container">
+          <div className="section-header">
+            <h2>Nossa Equipe Apaixonada 👩‍⚕️</h2>
+            <p>Profissionais dedicados ao bem-estar dos seus bichinhos</p>
+          </div>
+          
+          <div className="equipe-grid">
+            <div className="equipe-card">
+              <div className="equipe-icon">
+                <i className="fas fa-user-md"></i>
+              </div>
+              <h3>Dra. Ana Beatriz</h3>
+              <p>Veterinária especialista em clínica geral com 8 anos de experiência. Apaixonada por cães e gatos, sempre trata cada paciente com muito carinho e dedicação.</p>
+            </div>
+            
+            <div className="equipe-card">
+              <div className="equipe-icon">
+                <i className="fas fa-cut"></i>
+              </div>
+              <h3>Dr. Carlos Mendes</h3>
+              <p>Cirurgião veterinário com especialização em procedimentos minimamente invasivos. Mais de 10 anos cuidando da saúde dos nossos amigos de quatro patas.</p>
+            </div>
+            
+            <div className="equipe-card">
+              <div className="equipe-icon">
+                <i className="fas fa-heart"></i>
+              </div>
+              <h3>Enfª Juliana</h3>
+              <p>Técnica em enfermagem veterinária, responsável pelo acolhimento e cuidados especiais. Sua paixão pelos animais é contagiante!</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Blog Section */}
+      <section className="blog">
+        <div className="container">
+          <div className="section-header">
+            <h2>Dicas e Cuidados 📚</h2>
+            <p>Informações valiosas para cuidar melhor do seu pet</p>
+          </div>
+          
+          <div className="blog-grid">
+            <div className="blog-card">
+              <div className="blog-icon">
+                <i className="fas fa-apple-alt"></i>
+              </div>
+              <h3>Alimentação Saudável</h3>
+              <p>Descubra quais alimentos são ideais para cada fase da vida do seu pet e como manter uma dieta equilibrada.</p>
+              <a href="#" className="blog-link">Leia mais <i className="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div className="blog-card">
+              <div className="blog-icon">
+                <i className="fas fa-running"></i>
+              </div>
+              <h3>Exercícios e Brincadeiras</h3>
+              <p>Atividades divertidas para manter seu bichinho ativo, saudável e feliz todos os dias.</p>
+              <a href="#" className="blog-link">Leia mais <i className="fas fa-arrow-right"></i></a>
+            </div>
+            
+            <div className="blog-card">
+              <div className="blog-icon">
+                <i className="fas fa-shield-alt"></i>
+              </div>
+              <h3>Prevenção de Doenças</h3>
+              <p>Saiba como prevenir as principais doenças e manter a saúde do seu pet sempre em dia.</p>
+              <a href="#" className="blog-link">Leia mais <i className="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Contato Section */}
+      <section id="contato" className="contato">
+        <div className="container">
+          <div className="section-header">
+            <h2>Entre em Contato 📞</h2>
+            <p>Estamos aqui para cuidar do seu melhor amigo</p>
+          </div>
+          
+          <div className="contato-grid">
+            <div className="contato-info">
+              <div className="info-item">
+                <div className="info-icon">
+                  <i className="fas fa-map-marker-alt"></i>
+                </div>
+                <div className="info-content">
+                  <h3>Endereço</h3>
+                  <p>Rua das Flores, 123<br />Centro - Cidade Feliz<br />CEP: 12345-678</p>
+                </div>
+              </div>
+              
+              <div className="info-item">
+                <div className="info-icon">
+                  <i className="fas fa-phone"></i>
+                </div>
+                <div className="info-content">
+                  <h3>Telefone</h3>
+                  <p>(11) 9999-8888<br />WhatsApp disponível</p>
+                </div>
+              </div>
+              
+              <div className="info-item">
+                <div className="info-icon">
+                  <i className="fas fa-clock"></i>
+                </div>
+                <div className="info-content">
+                  <h3>Horário de Funcionamento</h3>
+                  <p>Segunda a Sexta: 8h às 18h<br />Sábado: 8h às 14h<br />Domingo: Emergências</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="contato-form">
+              <h3>Agende sua Consulta</h3>
+              <form>
+                <div className="form-group">
+                  <input type="text" placeholder="Seu nome" required />
+                </div>
+                <div className="form-group">
+                  <input type="tel" placeholder="Seu telefone" required />
+                </div>
+                <div className="form-group">
+                  <input type="text" placeholder="Nome do seu pet" required />
+                </div>
+                <div className="form-group">
+                  <select required>
+                    <option value="">Tipo de serviço</option>
+                    <option value="consulta">Consulta Geral</option>
+                    <option value="vacina">Vacinação</option>
+                    <option value="cirurgia">Cirurgia</option>
+                    <option value="emergencia">Emergência</option>
+                  </select>
+                </div>
+                <div className="form-group">
+                  <textarea placeholder="Observações (opcional)"></textarea>
+                </div>
+                <button type="submit" className="btn-primary">Agendar Consulta</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="footer">
+        <div className="container">
+          <div className="footer-content">
+            <div className="footer-section">
+              <div className="footer-brand">
+                <i className="fas fa-paw"></i>
+                <span>Patinhas Felizes</span>
+              </div>
+              <p>Cuidando com amor dos seus melhores amigos há mais de 5 anos. Aqui, cada patinha é tratada com carinho especial.</p>
+              <div className="social-links">
+                <a href="#"><i className="fab fa-facebook-f"></i></a>
+                <a href="#"><i className="fab fa-instagram"></i></a>
+                <a href="#"><i className="fab fa-whatsapp"></i></a>
+              </div>
+            </div>
+            
+            <div className="footer-section">
+              <h4>Serviços</h4>
+              <ul>
+                <li><a href="#servicos">Consultas Gerais</a></li>
+                <li><a href="#servicos">Vacinação</a></li>
+                <li><a href="#servicos">Cirurgias</a></li>
+                <li><a href="#servicos">Exames</a></li>
+              </ul>
+            </div>
+            
+            <div className="footer-section">
+              <h4>Links Úteis</h4>
+              <ul>
+                <li><a href="#sobre">Sobre Nós</a></li>
+                <li><a href="#equipe">Nossa Equipe</a></li>
+                <li><a href="#produtos">Produtos</a></li>
+                <li><a href="#contato">Contato</a></li>
+              </ul>
+            </div>
+            
+            <div className="footer-section footer-contact">
+              <h4>Contato</h4>
+              <p><i className="fas fa-map-marker-alt"></i> Rua das Flores, 123</p>
+              <p><i className="fas fa-phone"></i> (11) 9999-8888</p>
+              <p><i className="fas fa-envelope"></i> contato@patinhasfelizes.com</p>
+            </div>
+          </div>
+          
+          <div className="footer-bottom">
+            <p>&copy; 2024 Patinhas Felizes. Todos os direitos reservados.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
