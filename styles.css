@@ -44,6 +44,19 @@ body {
     color: #8B4513;
 }
 
+.logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 15px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
 .nav-brand i {
     margin-right: 10px;
     color: #FF8C42;
@@ -144,13 +157,40 @@ body {
     justify-content: center;
 }
 
-.hero-image img {
-    max-width: 400px;
-    max-height: 300px;
+.hero-animals {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.animal-img {
+    max-width: 180px;
+    max-height: 180px;
     width: 100%;
     height: auto;
     border-radius: 20px;
     object-fit: cover;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 3px solid transparent;
+}
+
+.interactive-animal:hover {
+    transform: scale(1.05) translateY(-5px);
+    border-color: #FF8C42;
+    box-shadow: 0 10px 25px rgba(255, 140, 66, 0.3);
+}
+
+.interactive-animal.clinical-focus {
+    border-color: #28a745;
+    box-shadow: 0 0 20px rgba(40, 167, 69, 0.4);
+    animation: clinicalPulse 2s infinite;
+}
+
+@keyframes clinicalPulse {
+    0%, 100% { box-shadow: 0 0 20px rgba(40, 167, 69, 0.4); }
+    50% { box-shadow: 0 0 30px rgba(40, 167, 69, 0.6); }
 }
 
 .image-placeholder {
@@ -369,6 +409,26 @@ body {
     height: auto;
     border-radius: 15px;
     object-fit: cover;
+}
+
+.interactive-product {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.interactive-product:hover {
+    transform: scale(1.02);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.produto-aviso {
+    background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+    color: #856404;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    border-left: 4px solid #ffc107;
 }
 
 .produto-info h3 {
@@ -676,6 +736,14 @@ body {
     margin-bottom: 1rem;
 }
 
+.footer-logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 .footer-brand i {
     margin-right: 10px;
     color: #FF8C42;
@@ -749,6 +817,32 @@ body {
     color: #ccc;
 }
 
+/* Estilos para elementos clínicos interativos */
+.clinical-highlight {
+    background: linear-gradient(135deg, #e8f5e8, #f0fff0);
+    border: 2px solid #28a745;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 10px 0;
+    transition: all 0.3s ease;
+}
+
+.clinical-highlight:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.2);
+}
+
+.clinical-icon {
+    color: #28a745;
+    font-size: 1.2em;
+    margin-right: 8px;
+}
+
+.coleira-option {
+    background-color: #fff3cd !important;
+    color: #856404 !important;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-menu {
@@ -774,6 +868,15 @@ body {
     
     .hero-buttons {
         justify-content: center;
+    }
+    
+    .hero-animals {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .animal-img {
+        max-width: 200px;
     }
     
     .section-header h2 {

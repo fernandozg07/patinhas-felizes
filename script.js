@@ -41,35 +41,64 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-// Formulário de contato
+// Formulário de contato com validação clínica
 document.querySelector('.contato-form form').addEventListener('submit', function(e) {
     e.preventDefault();
+    
+    const tipoAnimal = document.getElementById('tipoAnimal').value;
+    const tipoServico = document.getElementById('tipoServico').value;
+    
+    // Validação específica para coleira
+    if (tipoServico === 'coleira' && tipoAnimal !== 'cachorro' && tipoAnimal !== 'gato') {
+        alert('⚠️ O Kit Coleira + Pulseira está disponível apenas para cães e gatos!');
+        return;
+    }
     
     // Simular envio do formulário
     const button = this.querySelector('button[type="submit"]');
     const originalText = button.innerHTML;
     
-    button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+    button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processando consulta clínica...';
     button.disabled = true;
     
     setTimeout(() => {
-        button.innerHTML = '<i class="fas fa-check"></i> Mensagem Enviada!';
+        button.innerHTML = '<i class="fas fa-check"></i> Agendamento Confirmado!';
         button.style.background = '#28a745';
+        
+        // Mostrar mensagem clínica personalizada
+        const clinicalConfirmation = document.createElement('div');
+        clinicalConfirmation.className = 'clinical-message clinical-highlight';
+        clinicalConfirmation.innerHTML = `⚕️ Consulta agendada para ${tipoAnimal}! Nossa equipe clínica está preparada para receber vocês com muito carinho.`;
+        clinicalConfirmation.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10000;
+            max-width: 300px;
+            animation: fadeInOut 4s ease-in-out;
+        `;
+        document.body.appendChild(clinicalConfirmation);
+        
+        setTimeout(() => {
+            if (clinicalConfirmation.parentNode) clinicalConfirmation.remove();
+        }, 4000);
         
         setTimeout(() => {
             button.innerHTML = originalText;
             button.disabled = false;
             button.style.background = '';
             this.reset();
+            updateColeiraOption();
         }, 3000);
     }, 2000);
 });
 
-// Efeito de hover nos cards de serviços
+// Efeito de hover nos cards de serviços com foco clínico
 document.querySelectorAll('.servico-item').forEach(card => {
     card.addEventListener('mouseenter', function() {
-        this.style.background = 'linear-gradient(135deg, #FF8C42, #FFB366)';
+        this.style.background = 'linear-gradient(135deg, #28a745, #20c997)';
         this.style.color = 'white';
+        this.classList.add('clinical-highlight');
         const icon = this.querySelector('i');
         if (icon) icon.style.color = 'white';
     });
@@ -77,9 +106,98 @@ document.querySelectorAll('.servico-item').forEach(card => {
     card.addEventListener('mouseleave', function() {
         this.style.background = 'white';
         this.style.color = '';
+        this.classList.remove('clinical-highlight');
         const icon = this.querySelector('i');
         if (icon) icon.style.color = '#FF8C42';
     });
+});
+
+// Interatividade dos animais com foco clínico
+document.querySelectorAll('.interactive-animal').forEach(animal => {
+    animal.addEventListener('click', function() {
+        const animalType = this.dataset.animal;
+        
+        // Remove foco clínico de todos os animais
+        document.querySelectorAll('.interactive-animal').forEach(a => {
+            a.classList.remove('clinical-focus');
+        });
+        
+        // Adiciona foco clínico ao animal selecionado
+        this.classList.add('clinical-focus');
+        
+        // Mostra informações clínicas específicas
+        showClinicalInfo(animalType);
+        
+        // Atualiza formulário se necessário
+        const tipoAnimalSelect = document.getElementById('tipoAnimal');
+        if (tipoAnimalSelect) {
+            tipoAnimalSelect.value = animalType;
+            updateColeiraOption();
+        }
+    });
+});
+
+// Função para mostrar informações clínicas
+function showClinicalInfo(animalType) {
+    const clinicalMessages = {
+        cachorro: '🐕 Cuidados especiais para cães: vacinação, vermifugação e check-ups regulares!',
+        gato: '🐱 Cuidados especiais para gatos: prevenção de doenças felinas e cuidados dentários!'
+    };
+    
+    // Remove mensagens anteriores
+    const existingMessage = document.querySelector('.clinical-message');
+    if (existingMessage) existingMessage.remove();
+    
+    // Cria nova mensagem clínica
+    const message = document.createElement('div');
+    message.className = 'clinical-message clinical-highlight';
+    message.innerHTML = `<span class="clinical-icon">⚕️</span>${clinicalMessages[animalType]}`;
+    message.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10000;
+        max-width: 400px;
+        text-align: center;
+        animation: fadeInOut 3s ease-in-out;
+    `;
+    
+    document.body.appendChild(message);
+    
+    setTimeout(() => {
+        if (message.parentNode) message.remove();
+    }, 3000);
+}
+
+// Controle da opção coleira baseado no tipo de animal
+function updateColeiraOption() {
+    const tipoAnimal = document.getElementById('tipoAnimal');
+    const coleiraOption = document.querySelector('.coleira-option');
+    
+    if (tipoAnimal && coleiraOption) {
+        const selectedAnimal = tipoAnimal.value;
+        
+        if (selectedAnimal === 'cachorro' || selectedAnimal === 'gato') {
+            coleiraOption.style.display = 'block';
+            coleiraOption.textContent = `Kit Coleira + Pulseira para ${selectedAnimal === 'cachorro' ? 'Cães' : 'Gatos'} 🎁`;
+        } else {
+            coleiraOption.style.display = 'none';
+            // Remove seleção se estava selecionada
+            const tipoServico = document.getElementById('tipoServico');
+            if (tipoServico && tipoServico.value === 'coleira') {
+                tipoServico.value = '';
+            }
+        }
+    }
+}
+
+// Event listener para mudança no tipo de animal
+document.addEventListener('DOMContentLoaded', () => {
+    const tipoAnimal = document.getElementById('tipoAnimal');
+    if (tipoAnimal) {
+        tipoAnimal.addEventListener('change', updateColeiraOption);
+    }
 });
 
 // Contador animado para estatísticas (pode ser usado futuramente)
@@ -120,30 +238,31 @@ window.addEventListener('scroll', () => {
     });
 });
 
-// Efeito de partículas fofas (corações flutuantes)
+// Efeito de partículas clínicas (corações e símbolos médicos)
 function createFloatingHearts() {
     const hero = document.querySelector('.hero');
+    const symbols = ['💕', '⚕️', '🩺', '💊', '🏥'];
     
     setInterval(() => {
-        const heart = document.createElement('div');
-        heart.innerHTML = '💕';
-        heart.style.position = 'absolute';
-        heart.style.left = Math.random() * 100 + '%';
-        heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
-        heart.style.opacity = '0.7';
-        heart.style.fontSize = '20px';
-        heart.style.pointerEvents = 'none';
-        heart.style.animation = 'floatUp 4s ease-in-out infinite';
+        const symbol = document.createElement('div');
+        symbol.innerHTML = symbols[Math.floor(Math.random() * symbols.length)];
+        symbol.style.position = 'absolute';
+        symbol.style.left = Math.random() * 100 + '%';
+        symbol.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        symbol.style.opacity = '0.6';
+        symbol.style.fontSize = '18px';
+        symbol.style.pointerEvents = 'none';
+        symbol.style.animation = 'floatUp 4s ease-in-out infinite';
         
-        hero.appendChild(heart);
+        hero.appendChild(symbol);
         
         setTimeout(() => {
-            heart.remove();
+            symbol.remove();
         }, 4000);
-    }, 3000);
+    }, 4000);
 }
 
-// CSS para animação dos corações
+// CSS para animações clínicas e corações
 const style = document.createElement('style');
 style.textContent = `
     @keyframes floatUp {
@@ -163,9 +282,22 @@ style.textContent = `
         }
     }
     
+    @keyframes fadeInOut {
+        0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+        20% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        80% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+    }
+    
     .nav-menu a.active {
         color: #FF8C42 !important;
         font-weight: 600;
+    }
+    
+    .clinical-message {
+        font-weight: 600;
+        font-size: 1.1em;
+        box-shadow: 0 10px 30px rgba(40, 167, 69, 0.3);
     }
 `;
 document.head.appendChild(style);
@@ -173,6 +305,21 @@ document.head.appendChild(style);
 // Inicializar efeitos quando a página carregar
 document.addEventListener('DOMContentLoaded', () => {
     createFloatingHearts();
+    
+    // Adicionar ícones clínicos aos serviços
+    const servicoItems = document.querySelectorAll('.servico-item');
+    servicoItems.forEach(item => {
+        const title = item.querySelector('h3');
+        if (title) {
+            const clinicalIcon = document.createElement('span');
+            clinicalIcon.className = 'clinical-icon';
+            clinicalIcon.innerHTML = '⚕️';
+            title.prepend(clinicalIcon);
+        }
+    });
+    
+    // Inicializar controle da coleira
+    updateColeiraOption();
 });
 
 // Adicionar efeito de digitação no título principal
