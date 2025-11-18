@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
+import './index.css';
+import Dashboard from './components/Dashboard';
+import Chatbot from './components/Chatbot';
 
 function App() {
+  const [showDashboard, setShowDashboard] = useState(false);
+  const [showChatbot, setShowChatbot] = useState(false);
+
+  if (showDashboard) {
+    return <Dashboard onBack={() => setShowDashboard(false)} />;
+  }
+
   return (
     <div className="App">
       {/* Header */}
@@ -17,6 +27,7 @@ function App() {
             <li><a href="#produtos">Produtos</a></li>
             <li><a href="#equipe">Equipe</a></li>
             <li><a href="#contato">Contato</a></li>
+            <li><a href="#" onClick={() => setShowDashboard(true)}>Dashboard</a></li>
           </ul>
         </nav>
       </header>
@@ -32,7 +43,7 @@ function App() {
                 <i className="fas fa-calendar-alt"></i>
                 Agende uma Consulta
               </a>
-              <a href="#sobre" className="btn-secondary">Conheça Nossa História</a>
+              <button onClick={() => setShowChatbot(true)} className="btn-secondary">🐶 Dr. Patinhas</button>
             </div>
           </div>
           <div className="hero-image">
@@ -538,6 +549,25 @@ function App() {
           </div>
         </div>
       </footer>
+      
+      {/* Chatbot */}
+      <Chatbot isOpen={showChatbot} onClose={() => setShowChatbot(false)} />
+      
+      {/* Botão Flutuante Chat */}
+      <button 
+        onClick={() => setShowChatbot(true)}
+        className="fixed bottom-6 right-6 bg-gradient-to-r from-green-500 to-blue-600 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-all z-40"
+      >
+        <span className="text-2xl">🐶</span>
+      </button>
+      
+      {/* Botão Flutuante Dashboard */}
+      <button 
+        onClick={() => setShowDashboard(true)}
+        className="fixed bottom-6 left-6 bg-gradient-to-r from-green-500 to-blue-600 text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-all z-40"
+      >
+        <span className="text-2xl">📊</span>
+      </button>
     </div>
   );
 }
