@@ -240,13 +240,6 @@ const Dashboard = ({ onBack }) => {
 };
 
 const MetricCard = ({ title, value, icon, color, growth }) => {
-  const colorClasses = {
-    blue: 'border-l-blue-500 bg-gradient-to-br from-blue-50 to-blue-100',
-    green: 'border-l-green-500 bg-gradient-to-br from-green-50 to-emerald-100',
-    purple: 'border-l-purple-500 bg-gradient-to-br from-purple-50 to-purple-100',
-    yellow: 'border-l-yellow-500 bg-gradient-to-br from-yellow-50 to-orange-100'
-  };
-
   const cardStyles = {
     blue: { borderLeft: '4px solid #3b82f6', background: 'linear-gradient(135deg, #dbeafe, #bfdbfe)' },
     green: { borderLeft: '4px solid #10b981', background: 'linear-gradient(135deg, #d1fae5, #a7f3d0)' },

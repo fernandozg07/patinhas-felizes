@@ -18,7 +18,7 @@ function App() {
       <header className="header">
         <nav className="navbar">
           <div className="nav-brand">
-            <i className="fas fa-paw"></i>
+            <img src="/logo.png" alt="Logo Patinhas Felizes" style={{height: '50px', width: '50px', objectFit: 'cover', marginRight: '10px', borderRadius: '50%'}} />
             <span>Patinhas Felizes</span>
           </div>
           <ul className="nav-menu">
@@ -27,7 +27,7 @@ function App() {
             <li><a href="#produtos">Produtos</a></li>
             <li><a href="#equipe">Equipe</a></li>
             <li><a href="#contato">Contato</a></li>
-            <li><a href="#" onClick={() => setShowDashboard(true)}>Dashboard</a></li>
+            <li><button onClick={() => setShowDashboard(true)} style={{background: 'none', border: 'none', color: 'inherit', cursor: 'pointer', font: 'inherit'}}>Dashboard</button></li>
           </ul>
         </nav>
       </header>
