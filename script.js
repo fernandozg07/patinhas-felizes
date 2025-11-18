@@ -112,17 +112,17 @@ document.querySelectorAll('.servico-item').forEach(card => {
     });
 });
 
-// Interatividade dos animais com foco clínico
-document.querySelectorAll('.interactive-animal').forEach(animal => {
-    animal.addEventListener('click', function() {
+// Interatividade dos cards de animais com foco clínico
+document.querySelectorAll('.animal-card').forEach(card => {
+    card.addEventListener('click', function() {
         const animalType = this.dataset.animal;
         
-        // Remove foco clínico de todos os animais
-        document.querySelectorAll('.interactive-animal').forEach(a => {
-            a.classList.remove('clinical-focus');
+        // Remove foco clínico de todos os cards
+        document.querySelectorAll('.animal-card').forEach(c => {
+            c.classList.remove('clinical-focus');
         });
         
-        // Adiciona foco clínico ao animal selecionado
+        // Adiciona foco clínico ao card selecionado
         this.classList.add('clinical-focus');
         
         // Mostra informações clínicas específicas
@@ -140,8 +140,8 @@ document.querySelectorAll('.interactive-animal').forEach(animal => {
 // Função para mostrar informações clínicas
 function showClinicalInfo(animalType) {
     const clinicalMessages = {
-        cachorro: '🐕 Cuidados especiais para cães: vacinação, vermifugação e check-ups regulares!',
-        gato: '🐱 Cuidados especiais para gatos: prevenção de doenças felinas e cuidados dentários!'
+        cachorro: '🐕 Serviços para Cães: Consultas clínicas, vacinação, cirurgias e Kit Coleira exclusivo!',
+        gato: '🐱 Serviços para Gatos: Cuidados felinos, prevenção, odontologia e Kit Coleira especial!'
     };
     
     // Remove mensagens anteriores
