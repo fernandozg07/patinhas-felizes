@@ -143,47 +143,53 @@ const PetTracker = ({ onBack }) => {
   };
 
   return (
-    <div className="min-h-screen p-6" style={{
+    <div className="min-h-screen p-2 sm:p-4 lg:p-6" style={{
       background: 'linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%)',
       fontFamily: 'Poppins, sans-serif'
     }}>
       <div className="max-w-7xl mx-auto">
         
         {/* Header */}
-        <div className="rounded-2xl p-8 mb-8" style={{
+        <div className="rounded-2xl p-4 sm:p-6 lg:p-8 mb-4 sm:mb-6 lg:mb-8" style={{
           background: '#ffffff',
           boxShadow: '0 4px 6px rgba(0, 0, 0, 0.05)',
           border: '1px solid #e5e7eb'
         }}>
-          <h1 className="text-4xl font-bold mb-2 flex items-center gap-2">
-            <span className="text-4xl">🐾</span>
-            <span style={{
+          <h1 className="text-xl sm:text-2xl lg:text-4xl font-bold mb-2 flex items-center gap-2">
+            <span className="text-xl sm:text-2xl lg:text-4xl">🐾</span>
+            <span className="hidden sm:inline" style={{
               background: 'linear-gradient(135deg, #3b82f6, #1d4ed8)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text'
             }}>Monitoramento de Pets em Tempo Real</span>
+            <span className="sm:hidden" style={{
+              background: 'linear-gradient(135deg, #3b82f6, #1d4ed8)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text'
+            }}>Monitoramento</span>
           </h1>
-          <p className="text-gray-600">Sistema PatinhasTech - Coleiras Inteligentes</p>
-          <div className="flex gap-4 mt-4">
-            <div className="bg-green-100 px-4 py-2 rounded-lg">
-              <span className="text-green-800 font-medium">✅ {pets.filter(p => p.status === 'normal').length} Normais</span>
+          <p className="text-gray-600 text-sm sm:text-base">Sistema PatinhasTech - Coleiras Inteligentes</p>
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 mt-4">
+            <div className="bg-green-100 px-3 sm:px-4 py-2 rounded-lg">
+              <span className="text-green-800 font-medium text-sm sm:text-base">✅ {pets.filter(p => p.status === 'normal').length} Normais</span>
             </div>
-            <div className="bg-red-100 px-4 py-2 rounded-lg">
-              <span className="text-red-800 font-medium">⚠️ {pets.filter(p => p.status === 'alert').length} Alertas</span>
+            <div className="bg-red-100 px-3 sm:px-4 py-2 rounded-lg">
+              <span className="text-red-800 font-medium text-sm sm:text-base">⚠️ {pets.filter(p => p.status === 'alert').length} Alertas</span>
             </div>
-            <div className="bg-blue-100 px-4 py-2 rounded-lg">
-              <span className="text-blue-800 font-medium">📡 {pets.filter(p => p.collar.connected).length} Conectados</span>
+            <div className="bg-blue-100 px-3 sm:px-4 py-2 rounded-lg">
+              <span className="text-blue-800 font-medium text-sm sm:text-base">📡 {pets.filter(p => p.collar.connected).length} Conectados</span>
             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
           
           {/* Lista de Pets */}
           <div className="lg:col-span-2 space-y-4">
             {pets.map(pet => (
-              <div key={pet.id} className="rounded-2xl p-6 cursor-pointer transition-all duration-300"
+              <div key={pet.id} className="rounded-2xl p-4 sm:p-6 cursor-pointer transition-all duration-300"
                    style={{
                      background: 'rgba(255, 255, 255, 0.98)',
                      backdropFilter: 'blur(10px)',
@@ -200,64 +206,66 @@ const PetTracker = ({ onBack }) => {
                    }}
                    onClick={() => setSelectedPet(pet)}>
                 
-                <div className="flex justify-between items-start mb-4">
-                  <div className="flex items-center gap-4">
-                    <div className="w-16 h-16 rounded-full flex items-center justify-center text-2xl" style={{
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-4 gap-3">
+                  <div className="flex items-center gap-3 sm:gap-4 flex-1 min-w-0">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full flex items-center justify-center text-xl sm:text-2xl flex-shrink-0" style={{
                       background: 'linear-gradient(135deg, #f3f4f6, #e5e7eb)',
                       border: '2px solid #d1d5db'
                     }}>
                       {pet.breed.includes('Gato') || pet.breed.includes('Persa') ? '🐱' : '🐕'}
                     </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-gray-800">{pet.name}</h3>
-                      <p className="text-gray-600">{pet.breed} • {pet.age} anos</p>
-                      <p className="text-sm text-gray-500">Tutor: {pet.owner}</p>
+                    <div className="min-w-0 flex-1">
+                      <h3 className="text-lg sm:text-xl font-bold text-gray-800 truncate">{pet.name}</h3>
+                      <p className="text-gray-600 text-sm sm:text-base truncate">{pet.breed} • {pet.age} anos</p>
+                      <p className="text-xs sm:text-sm text-gray-500 truncate">Tutor: {pet.owner}</p>
                     </div>
                   </div>
-                  <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(pet.status)}`}>
+                  <span className={`px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap ${getStatusColor(pet.status)}`}>
                     {pet.status === 'normal' ? '✅ Normal' : '⚠️ Alerta'}
                   </span>
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-4">
                   <div className="text-center">
-                    <p className="text-2xl font-bold text-red-500">{pet.vitals.heartRate}</p>
+                    <p className="text-lg sm:text-xl lg:text-2xl font-bold text-red-500">{pet.vitals.heartRate}</p>
                     <p className="text-xs text-gray-500">❤️ BPM</p>
                   </div>
                   <div className="text-center">
-                    <p className="text-2xl font-bold text-blue-500">{pet.vitals.temperature}°</p>
+                    <p className="text-lg sm:text-xl lg:text-2xl font-bold text-blue-500">{pet.vitals.temperature}°</p>
                     <p className="text-xs text-gray-500">🌡️ Temp</p>
                   </div>
                   <div className="text-center">
-                    <p className={`text-2xl font-bold ${getActivityColor(pet.vitals.activity)}`}>{pet.vitals.activity}</p>
+                    <p className={`text-lg sm:text-xl lg:text-2xl font-bold ${getActivityColor(pet.vitals.activity)}`}>{pet.vitals.activity}</p>
                     <p className="text-xs text-gray-500">🏃 Atividade</p>
                   </div>
                   <div className="text-center">
-                    <p className="text-2xl font-bold text-green-500">{pet.vitals.steps.toLocaleString()}</p>
+                    <p className="text-lg sm:text-xl lg:text-2xl font-bold text-green-500">{pet.vitals.steps.toLocaleString()}</p>
                     <p className="text-xs text-gray-500">👣 Passos</p>
                   </div>
                 </div>
 
-                <div className="flex justify-between items-center text-sm text-gray-500">
-                  <span>📍 {pet.location.address}</span>
-                  <span>🔋 {pet.collar.battery}%</span>
-                  <span>🕐 {pet.lastUpdate.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })}</span>
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center text-xs sm:text-sm text-gray-500 gap-1 sm:gap-0">
+                  <span className="truncate">📍 {pet.location.address}</span>
+                  <div className="flex justify-between sm:gap-4">
+                    <span>🔋 {pet.collar.battery}%</span>
+                    <span>🕐 {pet.lastUpdate.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' })}</span>
+                  </div>
                 </div>
               </div>
             ))}
           </div>
 
           {/* Painel de Alertas */}
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             
             {/* Alertas Ativos */}
-            <div className="rounded-2xl p-6" style={{
+            <div className="rounded-2xl p-4 sm:p-6" style={{
               background: '#ffffff',
               boxShadow: '0 4px 6px rgba(0, 0, 0, 0.05)',
               border: '1px solid #e5e7eb'
             }}>
-              <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                <span className="text-2xl">🚨</span>
+              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold mb-4 flex items-center gap-2">
+                <span className="text-lg sm:text-xl lg:text-2xl">🚨</span>
                 <span style={{
                   background: 'linear-gradient(135deg, #3b82f6, #1d4ed8)',
                   WebkitBackgroundClip: 'text',
@@ -267,17 +275,17 @@ const PetTracker = ({ onBack }) => {
               </h2>
               <div className="space-y-3">
                 {alerts.length === 0 ? (
-                  <p className="text-gray-500 text-center py-4">✅ Nenhum alerta ativo</p>
+                  <p className="text-gray-500 text-center py-4 text-sm sm:text-base">✅ Nenhum alerta ativo</p>
                 ) : (
                   alerts.map(alert => (
                     <div key={alert.id} className="p-3 bg-yellow-50 border-l-4 border-yellow-400 rounded">
                       <div className="flex justify-between items-start">
-                        <div>
-                          <p className="font-medium text-yellow-800">{alert.petName}</p>
-                          <p className="text-sm text-yellow-700">{alert.message}</p>
+                        <div className="flex-1 min-w-0">
+                          <p className="font-medium text-yellow-800 text-sm sm:text-base truncate">{alert.petName}</p>
+                          <p className="text-xs sm:text-sm text-yellow-700">{alert.message}</p>
                           <p className="text-xs text-yellow-600">{alert.value}</p>
                         </div>
-                        <button className="text-yellow-600 hover:text-yellow-800">
+                        <button className="text-yellow-600 hover:text-yellow-800 ml-2">
                           ⚠️
                         </button>
                       </div>
@@ -288,13 +296,13 @@ const PetTracker = ({ onBack }) => {
             </div>
 
             {/* Estatísticas Gerais */}
-            <div className="rounded-2xl p-6" style={{
+            <div className="rounded-2xl p-4 sm:p-6" style={{
               background: '#ffffff',
               boxShadow: '0 4px 6px rgba(0, 0, 0, 0.05)',
               border: '1px solid #e5e7eb'
             }}>
-              <h2 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                <span className="text-2xl">📊</span>
+              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold mb-4 flex items-center gap-2">
+                <span className="text-lg sm:text-xl lg:text-2xl">📊</span>
                 <span style={{
                   background: 'linear-gradient(135deg, #3b82f6, #1d4ed8)',
                   WebkitBackgroundClip: 'text',
@@ -303,7 +311,7 @@ const PetTracker = ({ onBack }) => {
                 }}>Estatísticas</span>
               </h2>
               
-              <div className="space-y-4 mb-6">
+              <div className="space-y-3 sm:space-y-4 mb-4 sm:mb-6">
                 <StatItem label="Pets monitorados" value={pets.length} color="#8b5cf6" />
                 <StatItem label="Média de passos/dia" value={Math.round(pets.reduce((sum, pet) => sum + pet.vitals.steps, 0) / pets.length).toLocaleString()} color="#10b981" />
                 <StatItem label="Bateria média" value={`${Math.round(pets.reduce((sum, pet) => sum + pet.collar.battery, 0) / pets.length)}%`} color="#f59e0b" />
@@ -312,12 +320,12 @@ const PetTracker = ({ onBack }) => {
               
               {/* Mini gráfico de atividade */}
               <div>
-                <h3 className="font-bold text-gray-700 mb-3">📈 Atividade dos Pets</h3>
-                <div className="flex items-end justify-between h-20 px-2">
+                <h3 className="font-bold text-gray-700 mb-3 text-sm sm:text-base">📈 Atividade dos Pets</h3>
+                <div className="flex items-end justify-between h-16 sm:h-20 px-1 sm:px-2">
                   {pets.map((pet) => (
                     <div key={pet.id} className="flex flex-col items-center gap-1">
                       <div 
-                        className="w-8 rounded-t transition-all duration-500"
+                        className="w-6 sm:w-8 rounded-t transition-all duration-500"
                         style={{
                           height: `${Math.max((pet.vitals.steps / 10000) * 100, 15)}%`,
                           background: pet.status === 'normal' ? 'linear-gradient(135deg, #10b981, #059669)' : 'linear-gradient(135deg, #ef4444, #dc2626)',
@@ -333,20 +341,20 @@ const PetTracker = ({ onBack }) => {
             </div>
 
             {/* Ações Rápidas */}
-            <div className="bg-white rounded-xl shadow-lg p-6">
-              <h2 className="text-xl font-bold text-gray-800 mb-4">⚡ Ações Rápidas</h2>
+            <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6">
+              <h2 className="text-lg sm:text-xl font-bold text-gray-800 mb-4">⚡ Ações Rápidas</h2>
               <div className="space-y-2">
-                <button className="w-full py-3 rounded-xl text-white font-semibold transition-all duration-300" style={{
+                <button className="w-full py-2 sm:py-3 rounded-xl text-white font-semibold transition-all duration-300 text-sm sm:text-base" style={{
                   background: 'linear-gradient(135deg, #3b82f6, #1d4ed8)'
                 }}>
                   📞 Contatar Tutores
                 </button>
-                <button className="w-full py-3 rounded-xl text-white font-semibold transition-all duration-300" style={{
+                <button className="w-full py-2 sm:py-3 rounded-xl text-white font-semibold transition-all duration-300 text-sm sm:text-base" style={{
                   background: 'linear-gradient(135deg, #10b981, #059669)'
                 }}>
                   📋 Gerar Relatório
                 </button>
-                <button className="w-full py-3 rounded-xl text-white font-semibold transition-all duration-300" style={{
+                <button className="w-full py-2 sm:py-3 rounded-xl text-white font-semibold transition-all duration-300 text-sm sm:text-base" style={{
                   background: 'linear-gradient(135deg, #8b5cf6, #7c3aed)'
                 }}>
                   🔧 Configurações
@@ -358,89 +366,89 @@ const PetTracker = ({ onBack }) => {
 
         {/* Modal de Detalhes do Pet */}
         {selectedPet && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-2 sm:p-4">
             <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-              <div className="p-6">
-                <div className="flex justify-between items-start mb-6">
-                  <div className="flex items-center gap-4">
-                    <div className="w-20 h-20 rounded-full flex items-center justify-center text-3xl" style={{
+              <div className="p-4 sm:p-6">
+                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-6 gap-4">
+                  <div className="flex items-center gap-3 sm:gap-4 flex-1 min-w-0">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full flex items-center justify-center text-2xl sm:text-3xl flex-shrink-0" style={{
                       background: 'linear-gradient(135deg, #f3f4f6, #e5e7eb)',
                       border: '2px solid #d1d5db'
                     }}>
                       {selectedPet.breed.includes('Gato') || selectedPet.breed.includes('Persa') ? '🐱' : '🐕'}
                     </div>
-                    <div>
-                      <h2 className="text-2xl font-bold text-gray-800">{selectedPet.name}</h2>
-                      <p className="text-gray-600">{selectedPet.breed} • {selectedPet.age} anos</p>
-                      <p className="text-sm text-gray-500">Tutor: {selectedPet.owner}</p>
+                    <div className="min-w-0 flex-1">
+                      <h2 className="text-xl sm:text-2xl font-bold text-gray-800 truncate">{selectedPet.name}</h2>
+                      <p className="text-gray-600 text-sm sm:text-base truncate">{selectedPet.breed} • {selectedPet.age} anos</p>
+                      <p className="text-xs sm:text-sm text-gray-500 truncate">Tutor: {selectedPet.owner}</p>
                     </div>
                   </div>
                   <button 
                     onClick={() => setSelectedPet(null)}
-                    className="text-gray-400 hover:text-gray-600 text-2xl"
+                    className="text-gray-400 hover:text-gray-600 text-xl sm:text-2xl self-end sm:self-start"
                   >
                     ✕
                   </button>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                   <div className="space-y-4">
-                    <h3 className="text-lg font-bold text-gray-800">📊 Sinais Vitais</h3>
+                    <h3 className="text-base sm:text-lg font-bold text-gray-800">📊 Sinais Vitais</h3>
                     <div className="space-y-3">
                       <div className="flex justify-between p-3 bg-red-50 rounded-lg">
-                        <span>❤️ Frequência Cardíaca</span>
-                        <span className="font-bold">{selectedPet.vitals.heartRate} BPM</span>
+                        <span className="text-sm sm:text-base">❤️ Frequência Cardíaca</span>
+                        <span className="font-bold text-sm sm:text-base">{selectedPet.vitals.heartRate} BPM</span>
                       </div>
                       <div className="flex justify-between p-3 bg-blue-50 rounded-lg">
-                        <span>🌡️ Temperatura</span>
-                        <span className="font-bold">{selectedPet.vitals.temperature}°C</span>
+                        <span className="text-sm sm:text-base">🌡️ Temperatura</span>
+                        <span className="font-bold text-sm sm:text-base">{selectedPet.vitals.temperature}°C</span>
                       </div>
                       <div className="flex justify-between p-3 bg-green-50 rounded-lg">
-                        <span>🏃 Atividade</span>
-                        <span className={`font-bold ${getActivityColor(selectedPet.vitals.activity)}`}>
+                        <span className="text-sm sm:text-base">🏃 Atividade</span>
+                        <span className={`font-bold text-sm sm:text-base ${getActivityColor(selectedPet.vitals.activity)}`}>
                           {selectedPet.vitals.activity}
                         </span>
                       </div>
                       <div className="flex justify-between p-3 bg-purple-50 rounded-lg">
-                        <span>👣 Passos Hoje</span>
-                        <span className="font-bold">{selectedPet.vitals.steps.toLocaleString()}</span>
+                        <span className="text-sm sm:text-base">👣 Passos Hoje</span>
+                        <span className="font-bold text-sm sm:text-base">{selectedPet.vitals.steps.toLocaleString()}</span>
                       </div>
                     </div>
                   </div>
 
                   <div className="space-y-4">
-                    <h3 className="text-lg font-bold text-gray-800">📡 Coleira Inteligente</h3>
+                    <h3 className="text-base sm:text-lg font-bold text-gray-800">📡 Coleira Inteligente</h3>
                     <div className="space-y-3">
                       <div className="flex justify-between p-3 bg-gray-50 rounded-lg">
-                        <span>📱 Modelo</span>
-                        <span className="font-bold">{selectedPet.collar.model}</span>
+                        <span className="text-sm sm:text-base">📱 Modelo</span>
+                        <span className="font-bold text-sm sm:text-base truncate ml-2">{selectedPet.collar.model}</span>
                       </div>
                       <div className="flex justify-between p-3 bg-gray-50 rounded-lg">
-                        <span>🔋 Bateria</span>
-                        <span className="font-bold">{selectedPet.collar.battery}%</span>
+                        <span className="text-sm sm:text-base">🔋 Bateria</span>
+                        <span className="font-bold text-sm sm:text-base">{selectedPet.collar.battery}%</span>
                       </div>
                       <div className="flex justify-between p-3 bg-gray-50 rounded-lg">
-                        <span>📶 Conexão</span>
-                        <span className="font-bold text-green-600">
+                        <span className="text-sm sm:text-base">📶 Conexão</span>
+                        <span className="font-bold text-green-600 text-sm sm:text-base">
                           {selectedPet.collar.connected ? '✅ Conectado' : '❌ Desconectado'}
                         </span>
                       </div>
                       <div className="flex justify-between p-3 bg-gray-50 rounded-lg">
-                        <span>📍 Localização</span>
-                        <span className="font-bold text-sm">{selectedPet.location.address}</span>
+                        <span className="text-sm sm:text-base">📍 Localização</span>
+                        <span className="font-bold text-xs sm:text-sm truncate ml-2">{selectedPet.location.address}</span>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-6 flex gap-3">
-                  <button className="flex-1 bg-blue-500 text-white py-3 rounded-lg hover:bg-blue-600 transition-all">
+                <div className="mt-6 flex flex-col sm:flex-row gap-2 sm:gap-3">
+                  <button className="flex-1 bg-blue-500 text-white py-2 sm:py-3 rounded-lg hover:bg-blue-600 transition-all text-sm sm:text-base">
                     📞 Contatar Tutor
                   </button>
-                  <button className="flex-1 bg-green-500 text-white py-3 rounded-lg hover:bg-green-600 transition-all">
+                  <button className="flex-1 bg-green-500 text-white py-2 sm:py-3 rounded-lg hover:bg-green-600 transition-all text-sm sm:text-base">
                     📋 Ver Histórico
                   </button>
-                  <button className="flex-1 bg-purple-500 text-white py-3 rounded-lg hover:bg-purple-600 transition-all">
+                  <button className="flex-1 bg-purple-500 text-white py-2 sm:py-3 rounded-lg hover:bg-purple-600 transition-all text-sm sm:text-base">
                     ⚙️ Configurar
                   </button>
                 </div>
@@ -455,14 +463,14 @@ const PetTracker = ({ onBack }) => {
 
 // Componente para itens de estatística
 const StatItem = ({ label, value, color }) => (
-  <div className="flex justify-between items-center p-3 rounded-lg" style={{
+  <div className="flex justify-between items-center p-2 sm:p-3 rounded-lg" style={{
     background: `${color}15`,
     border: `1px solid ${color}30`
   }}>
-    <span className="text-gray-700 font-medium">{label}:</span>
-    <div className="flex items-center gap-2">
-      <span className="font-bold text-gray-800">{value}</span>
-      <div className="w-3 h-3 rounded-full" style={{ background: color }}></div>
+    <span className="text-gray-700 font-medium text-xs sm:text-sm truncate">{label}:</span>
+    <div className="flex items-center gap-2 ml-2">
+      <span className="font-bold text-gray-800 text-xs sm:text-sm">{value}</span>
+      <div className="w-3 h-3 rounded-full flex-shrink-0" style={{ background: color }}></div>
     </div>
   </div>
 );

@@ -18,7 +18,7 @@ const Dashboard = ({ onBack }) => {
   ]);
 
   return (
-    <div className="min-h-screen p-6" style={{
+    <div className="min-h-screen p-2 sm:p-4 lg:p-6" style={{
       fontFamily: 'Poppins, sans-serif',
       background: 'linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%)',
       minHeight: '100vh'
@@ -26,30 +26,36 @@ const Dashboard = ({ onBack }) => {
       <div className="max-w-7xl mx-auto">
         
         {/* Header */}
-        <div className="rounded-2xl p-8 mb-8" style={{
+        <div className="rounded-2xl p-4 sm:p-6 lg:p-8 mb-4 sm:mb-6 lg:mb-8" style={{
           background: '#ffffff',
           boxShadow: '0 4px 6px rgba(0, 0, 0, 0.05)',
           border: '1px solid #e5e7eb',
           position: 'relative',
           zIndex: 10
         }}>
-          <div className="flex justify-between items-center">
+          <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-4">
             <div>
-              <h1 className="text-4xl font-bold flex items-center gap-2">
-                <span className="text-4xl">🐾</span>
-                <span style={{
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold flex items-center gap-2">
+                <span className="text-2xl sm:text-3xl lg:text-4xl">🐾</span>
+                <span className="hidden sm:inline" style={{
                   background: 'linear-gradient(135deg, #3b82f6, #1d4ed8)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text'
                 }}>Dashboard Patinhas Felizes</span>
+                <span className="sm:hidden" style={{
+                  background: 'linear-gradient(135deg, #3b82f6, #1d4ed8)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text'
+                }}>Dashboard</span>
               </h1>
-              <p className="text-gray-600 text-lg">Gestão Inteligente em Tempo Real</p>
+              <p className="text-gray-600 text-sm sm:text-base lg:text-lg">Gestão Inteligente em Tempo Real</p>
             </div>
-            <div className="flex gap-3">
+            <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
               <button 
                 onClick={() => setActiveTab('overview')}
-                className="px-6 py-3 rounded-xl font-semibold transition-all"
+                className="px-3 sm:px-4 lg:px-6 py-2 sm:py-3 rounded-xl font-semibold transition-all text-sm sm:text-base"
                 style={activeTab === 'overview' ? {
                   background: 'linear-gradient(135deg, #3b82f6, #1d4ed8)',
                   color: 'white',
@@ -62,11 +68,12 @@ const Dashboard = ({ onBack }) => {
                   boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
                 }}
               >
-                📊 Visão Geral
+                <span className="hidden sm:inline">📊 Visão Geral</span>
+                <span className="sm:hidden">📊 Geral</span>
               </button>
               <button 
                 onClick={() => setActiveTab('pets')}
-                className="px-6 py-3 rounded-xl font-semibold transition-all"
+                className="px-3 sm:px-4 lg:px-6 py-2 sm:py-3 rounded-xl font-semibold transition-all text-sm sm:text-base"
                 style={activeTab === 'pets' ? {
                   background: 'linear-gradient(135deg, #8b5cf6, #7c3aed)',
                   color: 'white',
@@ -79,11 +86,12 @@ const Dashboard = ({ onBack }) => {
                   boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
                 }}
               >
-                🐾 Monitoramento
+                <span className="hidden sm:inline">🐾 Monitoramento</span>
+                <span className="sm:hidden">🐾 Pets</span>
               </button>
               <button 
                 onClick={() => setActiveTab('financial')}
-                className="px-6 py-3 rounded-xl font-semibold transition-all"
+                className="px-3 sm:px-4 lg:px-6 py-2 sm:py-3 rounded-xl font-semibold transition-all text-sm sm:text-base"
                 style={activeTab === 'financial' ? {
                   background: 'linear-gradient(135deg, #10b981, #059669)',
                   color: 'white',
@@ -96,7 +104,8 @@ const Dashboard = ({ onBack }) => {
                   boxShadow: '0 1px 3px rgba(0, 0, 0, 0.1)'
                 }}
               >
-                💰 Financeiro
+                <span className="hidden sm:inline">💰 Financeiro</span>
+                <span className="sm:hidden">💰 $</span>
               </button>
             </div>
           </div>
@@ -106,7 +115,7 @@ const Dashboard = ({ onBack }) => {
         {activeTab === 'overview' && (
           <>
             {/* Métricas Principais */}
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mb-4 sm:mb-6">
               <MetricCard 
                 title="Pets Cadastrados" 
                 value={metrics.totalPets} 
@@ -137,16 +146,16 @@ const Dashboard = ({ onBack }) => {
               />
             </div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
               
               {/* Gráfico Principal */}
-              <div className="lg:col-span-2 rounded-2xl p-8" style={{
+              <div className="lg:col-span-2 rounded-2xl p-4 sm:p-6 lg:p-8" style={{
                 background: '#ffffff',
                 boxShadow: '0 4px 6px rgba(0, 0, 0, 0.05)',
                 border: '1px solid #e5e7eb'
               }}>
-                <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                  <span className="text-2xl">📈</span>
+                <h2 className="text-lg sm:text-xl lg:text-2xl font-bold mb-4 sm:mb-6 flex items-center gap-2">
+                  <span className="text-lg sm:text-xl lg:text-2xl">📈</span>
                   <span style={{
                     background: 'linear-gradient(135deg, #3b82f6, #1d4ed8)',
                     WebkitBackgroundClip: 'text',
@@ -154,7 +163,7 @@ const Dashboard = ({ onBack }) => {
                     backgroundClip: 'text'
                   }}>Performance Financeira</span>
                 </h2>
-                <div className="h-64 rounded-2xl p-4" style={{
+                <div className="h-48 sm:h-56 lg:h-64 rounded-2xl p-2 sm:p-4" style={{
                   background: 'linear-gradient(135deg, #f1f5f9, #e2e8f0, #cbd5e1)',
                   border: '1px solid rgba(226, 232, 240, 0.8)'
                 }}>
@@ -163,13 +172,13 @@ const Dashboard = ({ onBack }) => {
               </div>
 
               {/* Alertas em Tempo Real */}
-              <div className="rounded-2xl p-6" style={{
+              <div className="rounded-2xl p-4 sm:p-6" style={{
                 background: '#ffffff',
                 boxShadow: '0 4px 6px rgba(0, 0, 0, 0.05)',
                 border: '1px solid #e5e7eb'
               }}>
-                <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                  <span className="text-2xl">🔔</span>
+                <h2 className="text-lg sm:text-xl lg:text-2xl font-bold mb-4 sm:mb-6 flex items-center gap-2">
+                  <span className="text-lg sm:text-xl lg:text-2xl">🔔</span>
                   <span style={{
                     background: 'linear-gradient(135deg, #3b82f6, #1d4ed8)',
                     WebkitBackgroundClip: 'text',
@@ -186,13 +195,13 @@ const Dashboard = ({ onBack }) => {
             </div>
 
             {/* Resumo de Monitoramento */}
-            <div className="mt-8 rounded-2xl p-8" style={{
+            <div className="mt-6 sm:mt-8 rounded-2xl p-4 sm:p-6 lg:p-8" style={{
               background: '#ffffff',
               boxShadow: '0 4px 6px rgba(0, 0, 0, 0.05)',
               border: '1px solid #e5e7eb'
             }}>
-              <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                <span className="text-2xl">🐕</span>
+              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold mb-4 sm:mb-6 flex items-center gap-2">
+                <span className="text-lg sm:text-xl lg:text-2xl">🐕</span>
                 <span style={{
                   background: 'linear-gradient(135deg, #3b82f6, #1d4ed8)',
                   WebkitBackgroundClip: 'text',
@@ -200,7 +209,7 @@ const Dashboard = ({ onBack }) => {
                   backgroundClip: 'text'
                 }}>Resumo de Monitoramento</span>
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 <PetMonitor name="Thor" status="normal" activity="Alta" location="Casa" />
                 <PetMonitor name="Luna" status="alert" activity="Baixa" location="Parque" />
                 <PetMonitor name="Buddy" status="normal" activity="Média" location="Casa" />
@@ -208,7 +217,7 @@ const Dashboard = ({ onBack }) => {
               <div className="mt-4 text-center">
                 <button 
                   onClick={() => setActiveTab('pets')}
-                  className="px-8 py-3 text-lg font-semibold rounded-full text-white transition-all duration-300"
+                  className="px-4 sm:px-6 lg:px-8 py-2 sm:py-3 text-sm sm:text-base lg:text-lg font-semibold rounded-full text-white transition-all duration-300 w-full sm:w-auto"
                   style={{
                     background: 'linear-gradient(135deg, #3b82f6, #1d4ed8)',
                     boxShadow: '0 4px 12px rgba(59, 130, 246, 0.3)',
@@ -224,7 +233,8 @@ const Dashboard = ({ onBack }) => {
                     e.target.style.boxShadow = '0 4px 12px rgba(59, 130, 246, 0.3)';
                   }}
                 >
-                  Ver Monitoramento Completo 🐾
+                  <span className="hidden sm:inline">Ver Monitoramento Completo 🐾</span>
+                  <span className="sm:hidden">Monitoramento Completo 🐾</span>
                 </button>
               </div>
             </div>
@@ -249,7 +259,7 @@ const MetricCard = ({ title, value, icon, color, growth }) => {
 
   return (
     <div 
-      className="rounded-2xl p-6 cursor-pointer transition-all duration-300"
+      className="rounded-2xl p-3 sm:p-4 lg:p-6 cursor-pointer transition-all duration-300"
       style={{
         background: '#ffffff',
         boxShadow: '0 2px 4px rgba(0, 0, 0, 0.05)',
@@ -260,12 +270,12 @@ const MetricCard = ({ title, value, icon, color, growth }) => {
       onMouseLeave={(e) => e.target.style.transform = 'scale(1)'}
     >
       <div className="flex justify-between items-start">
-        <div>
-          <p className="text-sm font-medium text-gray-600 uppercase">{title}</p>
-          <p className="text-2xl font-bold text-gray-900">{value}</p>
+        <div className="flex-1 min-w-0">
+          <p className="text-xs sm:text-sm font-medium text-gray-600 uppercase truncate">{title}</p>
+          <p className="text-lg sm:text-xl lg:text-2xl font-bold text-gray-900 truncate">{value}</p>
           <p className="text-xs text-green-600 mt-1">↗ {growth}</p>
         </div>
-        <div className="text-3xl">{icon}</div>
+        <div className="text-xl sm:text-2xl lg:text-3xl ml-2">{icon}</div>
       </div>
     </div>
   );
@@ -279,8 +289,8 @@ const AlertItem = ({ alert }) => {
   };
 
   return (
-    <div className={`p-4 rounded-xl border border-l-4 ${typeColors[alert.type]} hover:shadow-md transition-all`}>
-      <p className="text-sm font-medium">{alert.message}</p>
+    <div className={`p-3 sm:p-4 rounded-xl border border-l-4 ${typeColors[alert.type]} hover:shadow-md transition-all`}>
+      <p className="text-xs sm:text-sm font-medium">{alert.message}</p>
       <p className="text-xs opacity-75">{alert.time} atrás</p>
     </div>
   );
@@ -295,20 +305,20 @@ const PetMonitor = ({ name, status, activity, location }) => {
   const petIcon = name === 'Luna' ? '🐱' : '🐶';
 
   return (
-    <div className="rounded-xl p-6 transition-all duration-300 hover:scale-105" style={{
+    <div className="rounded-xl p-4 sm:p-6 transition-all duration-300 hover:scale-105" style={{
       background: '#ffffff',
       border: '1px solid #e5e7eb',
       boxShadow: '0 2px 4px rgba(0, 0, 0, 0.05)'
     }}>
       <div className="flex justify-between items-start mb-4">
-        <div className="flex items-center gap-3">
-          <div className="w-12 h-12 rounded-full flex items-center justify-center text-2xl" style={{
+        <div className="flex items-center gap-2 sm:gap-3 flex-1 min-w-0">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center text-xl sm:text-2xl flex-shrink-0" style={{
             background: 'linear-gradient(135deg, #f3f4f6, #e5e7eb)',
             border: '2px solid #d1d5db'
           }}>{petIcon}</div>
-          <h3 className="font-bold text-gray-800 text-lg">{name}</h3>
+          <h3 className="font-bold text-gray-800 text-base sm:text-lg truncate">{name}</h3>
         </div>
-        <span className="px-3 py-1 rounded-full text-xs font-medium" style={{
+        <span className="px-2 sm:px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap" style={{
           backgroundColor: statusColors[status].bg,
           color: statusColors[status].text,
           border: `1px solid ${statusColors[status].border}`
@@ -316,18 +326,18 @@ const PetMonitor = ({ name, status, activity, location }) => {
           {status === 'normal' ? '✅ Normal' : '⚠️ Alerta'}
         </span>
       </div>
-      <div className="space-y-2 text-sm">
+      <div className="space-y-2 text-xs sm:text-sm">
         <div className="flex items-center gap-2">
-          <span className="text-lg">🏃</span>
-          <span className="text-gray-700">Atividade: <strong>{activity}</strong></span>
+          <span className="text-base sm:text-lg">🏃</span>
+          <span className="text-gray-700 truncate">Atividade: <strong>{activity}</strong></span>
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-lg">📍</span>
-          <span className="text-gray-700">Local: <strong>{location}</strong></span>
+          <span className="text-base sm:text-lg">📍</span>
+          <span className="text-gray-700 truncate">Local: <strong>{location}</strong></span>
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-lg">🕐</span>
-          <span className="text-gray-700">Última atualização: <strong>agora</strong></span>
+          <span className="text-base sm:text-lg">🕐</span>
+          <span className="text-gray-700 truncate">Última atualização: <strong>agora</strong></span>
         </div>
       </div>
     </div>
@@ -342,40 +352,40 @@ const FinancialChart = () => {
   
   return (
     <div className="h-full flex flex-col">
-      <div className="flex justify-between items-center mb-4">
-        <div className="flex gap-4">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 gap-3">
+        <div className="flex gap-3 sm:gap-4">
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full" style={{background: 'linear-gradient(135deg, #10b981, #059669)'}}></div>
-            <span className="text-sm font-medium text-gray-700">Receita</span>
+            <span className="text-xs sm:text-sm font-medium text-gray-700">Receita</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="w-3 h-3 rounded-full" style={{background: 'linear-gradient(135deg, #ef4444, #dc2626)'}}></div>
-            <span className="text-sm font-medium text-gray-700">Custos</span>
+            <span className="text-xs sm:text-sm font-medium text-gray-700">Custos</span>
           </div>
         </div>
-        <div className="text-right">
-          <p className="text-sm text-gray-600">ROI: <strong className="text-green-600">+245%</strong></p>
-          <p className="text-sm text-gray-600">Break-even: <strong className="text-blue-600">Mês 2</strong></p>
+        <div className="text-left sm:text-right">
+          <p className="text-xs sm:text-sm text-gray-600">ROI: <strong className="text-green-600">+245%</strong></p>
+          <p className="text-xs sm:text-sm text-gray-600">Break-even: <strong className="text-blue-600">Mês 2</strong></p>
         </div>
       </div>
       
-      <div className="flex-1 flex items-end justify-between px-4">
+      <div className="flex-1 flex items-end justify-between px-2 sm:px-4">
         {months.map((month, index) => {
           const revenueHeight = (revenue[index] / 200) * 100;
           const costHeight = (costs[index] / 200) * 100;
           
           return (
-            <div key={month} className="flex flex-col items-center gap-2">
-              <div className="flex items-end gap-1" style={{height: '120px'}}>
+            <div key={month} className="flex flex-col items-center gap-1 sm:gap-2">
+              <div className="flex items-end gap-1" style={{height: '80px', '@media (min-width: 640px)': {height: '120px'}}}>
                 <div 
-                  className="w-4 rounded-t" 
+                  className="w-2 sm:w-3 lg:w-4 rounded-t" 
                   style={{
                     height: `${revenueHeight}%`,
                     background: 'linear-gradient(135deg, #10b981, #059669)'
                   }}
                 ></div>
                 <div 
-                  className="w-4 rounded-t" 
+                  className="w-2 sm:w-3 lg:w-4 rounded-t" 
                   style={{
                     height: `${costHeight}%`,
                     background: 'linear-gradient(135deg, #ef4444, #dc2626)'
@@ -383,7 +393,7 @@ const FinancialChart = () => {
                 ></div>
               </div>
               <span className="text-xs font-medium text-gray-600">{month}</span>
-              <span className="text-xs text-gray-500">R${revenue[index]}k</span>
+              <span className="text-xs text-gray-500 hidden sm:inline">R${revenue[index]}k</span>
             </div>
           );
         })}
