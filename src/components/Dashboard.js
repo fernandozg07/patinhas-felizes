@@ -21,7 +21,8 @@ const Dashboard = ({ onBack }) => {
     <div className="min-h-screen p-2 sm:p-4 lg:p-6" style={{
       fontFamily: 'Poppins, sans-serif',
       background: 'linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%)',
-      minHeight: '100vh'
+      minHeight: '100vh',
+      paddingTop: '20px'
     }}>
       <div className="max-w-7xl mx-auto">
         
